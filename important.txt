@@ -1,0 +1,5 @@
+https://github.com/meteoric/meteor-ionic/blob/master/GUIDE.md
+
+http://meteortips.com/tutorial/iron-router-part-1/
+
+https://www.meteor.com/try/2
