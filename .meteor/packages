@@ -9,9 +9,10 @@ autopublish
 insecure
 d3js:d3
 iron:router
-fourseven:scss
 meteoric:ionic-sass
 meteoric:ionicons-sass
 meteoric:ionic
 accounts-ui
 accounts-password
+aldeed:autoform
+fourseven:scss

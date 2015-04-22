@@ -19,9 +19,16 @@ Template.groups.rendered = function () {
 };
 
 Template.groups.helpers({
-  /*
+/*
+  groups: [
+  	{ name: "Group 1" },
+  	{ name: "Group 2" },
+  	{ name: "Group 3" },
+  	{ name: "Group 4" },
+  	{ name: "Group 5" }
+  ]
+*/
   groups: function () {
     return Groups.find();
   }
-  */
 });
