@@ -1,0 +1,10 @@
+<template name="_addGroup">
+  {{#ionModal title="Add Group" customTemplate=false}}
+    <!--
+    <form class="new-group">
+    	<input type="text" name="text" placeholder="Type name..." />
+  	</form>
+  	-->
+  	{{> quickForm collection="Groups" doc=group id="newgroup-form" type="insert" buttonContent="Create"}}
+  {{/ionModal}}
+</template>
