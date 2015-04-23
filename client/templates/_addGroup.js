@@ -1,12 +1,10 @@
-/*
+
 Template._addGroup.events({
-  "submit .new-group": function (event) {
+  submit: function (event) {
 
-    var text = event.target.text.value;
+    var text = event.target.name.value;
 
-    Groups.insert({
-      name: text
-    });
+    Meteor.call("addGroup", text);
 
     // Clear form
     event.target.text.value = "";
@@ -15,7 +13,7 @@ Template._addGroup.events({
     return false;
   }
 });
-*/
+/*
 AutoForm.hooks({
   'edit-form': {
     onSuccess: function (operation, result, template) {
@@ -27,3 +25,4 @@ AutoForm.hooks({
     }
   }
 });
+*/

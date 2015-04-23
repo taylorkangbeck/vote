@@ -4,23 +4,36 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title">Groups</h1>
+      <h1 class="title">Groups</h1>
   {{/contentFor}}
 
   {{#contentFor "headerButtonRight"}}
-    <button class="button button-clear" data-ion-modal="_addGroup">{{> ionIcon icon="ios-plus-empty"}}</button>
+    {{#if currentUser}}
+      <button class="button button-clear" data-ion-modal="_addGroup">{{> ionIcon icon="ios-plus-empty"}}</button>
+    {{/if}}
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
-      {{#ionList}}
-        {{#each groups}}
-          {{#ionItem path="" buttonRight=true avatar=true class="item-icon-right"}}
-            {{name}}
-            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
-          {{/ionItem}}
-        {{/each}}
-      {{/ionList}}
+      {{#unless currentUser}}
+        <br><br><br>
+        <center><h4>welcome to</h4></center>
+        <br>
+        <center><h3>Vote!</h3></center>
+      {{else}}
+        {{#ionList}}
+          {{#each groups}}
+            {{> group}}
+          {{/each}}
+        {{/ionList}}
+      {{/unless}}
     {{/ionContent}}
   {{/ionView}}
+</template>
+
+<template name="group">
+  {{#ionItem path="" buttonRight=true avatar=true class="item-icon-right"}}
+    {{name}}
+    {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+  {{/ionItem}}
 </template>

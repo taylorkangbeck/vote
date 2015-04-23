@@ -1,3 +1,6 @@
+Meteor.subscribe("groups");
+
+
 Template.groups.created = function () {
  /* 
   this.autorun(function () {
@@ -19,16 +22,22 @@ Template.groups.rendered = function () {
 };
 
 Template.groups.helpers({
-/*
-  groups: [
-  	{ name: "Group 1" },
-  	{ name: "Group 2" },
-  	{ name: "Group 3" },
-  	{ name: "Group 4" },
-  	{ name: "Group 5" }
-  ]
-*/
+
   groups: function () {
     return Groups.find();
   }
+});
+
+Template.group.helpers({
+  isMember: function () {
+    return this.members.indexOf(Meteor.userId()) > -1; //not necessary bs of backend security?
+  },
+
+  isAdmin: function () {
+    return this.admin === Meteor.userId();
+  }
+});
+
+Accounts.ui.config({
+  passwordSignupFields: "USERNAME_ONLY"
 });
