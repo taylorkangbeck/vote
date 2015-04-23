@@ -7,12 +7,23 @@ Template._addGroup.events({
     Meteor.call("addGroup", text);
 
     // Clear form
-    event.target.text.value = "";
+    event.target.name.value = "";
 
     // Prevent default form submit
     return false;
   }
 });
+
+Template._addGroup.helpers({
+  defaultValues: function() {
+    return {
+      createdAt: new Date(),
+      admin: Meteor.userId(),
+      members: [Meteor.userId()]
+    }
+  }
+});
+
 /*
 AutoForm.hooks({
   'edit-form': {

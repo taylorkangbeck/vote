@@ -4,7 +4,7 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-      <h1 class="title">Groups</h1>
+      <h1 class="title">My Groups</h1>
   {{/contentFor}}
 
   {{#contentFor "headerButtonRight"}}
@@ -32,7 +32,7 @@
 </template>
 
 <template name="group">
-  {{#ionItem path="" buttonRight=true avatar=true class="item-icon-right"}}
+  {{#ionItem path="groupView" buttonRight=true avatar=true class="item-icon-right"}}
     {{name}}
     {{> ionIcon icon="ios-arrow-forward" class="positive"}}
   {{/ionItem}}

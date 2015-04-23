@@ -1,0 +1,52 @@
+<template name="groupView">
+  {{#contentFor "headerButtonLeft"}}
+	{{>ionNavBackButton path="groups" text="My Groups"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+  	{{#with group}}
+    	<h1 class="title">{{name}}</h1>
+    {{/with}}
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+  	<button class="button button-clear" data-ion-modal="_addIssue">{{> ionIcon icon="ios-plus-empty"}}</button>
+  {{/contentFor}}
+
+  {{#ionView}}
+  	{{#ionContent class="padding contact-detail"}}
+  	  <p>hi</p>
+  	  {{#with group}}
+	      {{#each issues _id}}
+	        {{> issue}}
+	      {{/each}}
+      {{/with}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>
+
+<template name="issue">
+	<div class="issue card">
+      <div class="item item-body">
+        <h2>{{title}}</h2>
+        <p>{{description}}</p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#" data-action="fake">
+          <i class="icon ion-email"></i>
+          Send Email
+        </a>
+        <a class="tab-item" href="#" data-action="fake">
+          <i class="icon ion-iphone"></i>
+          Call
+        </a>
+        <a class="tab-item" href="#" data-action="fake">
+          <i class="icon ion-share"></i>
+          Share
+        </a>
+      </div>
+
+	</div>
+</template>

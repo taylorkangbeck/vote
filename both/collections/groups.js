@@ -13,8 +13,8 @@ groupSchema = new SimpleSchema({
 });
 
 Groups.attachSchema(groupSchema);
-*/
 
+*/
 Meteor.methods({
   addGroup: function (text) {
     // Make sure the user is logged in before adding a group

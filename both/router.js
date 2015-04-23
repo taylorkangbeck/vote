@@ -8,11 +8,15 @@ Router.map(function() {
   });
 
   this.route('login', {
-  	path:'/login'
+  	path: '/login'
   });
-/*
-  this.route('contacts.show', {
-    path: '/contacts/:_id'
+
+  this.route('groupView', {
+  	path: '/groups/:_id',
+  	data: function () {
+  		return {
+  			group: Groups.findOne({_id: this.params._id })
+  		};
+  	}
   });
-*/
 });
