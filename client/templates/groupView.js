@@ -1,8 +1,12 @@
-Meteor.subscribe("issues");
-
+Deps.autorun(function(){
+    Meteor.subscribe("issues", Session.get("groupId"));
+});
 Template.groupView.helpers({
-	issues: function (groupId) {
-		console.log(groupId);
-    	return Issues.find({group: groupId});
+
+    issues: function (groupId) {
+	    Session.set("groupId", groupId);
+	    var iss = Issues.find();
+	    console.log("found issues " + iss.count())
+    	    return iss;
   	}
 });

@@ -1,15 +1,14 @@
 Template._addIssue.events({
   submit: function (event) {
-    console.log(this);
+    
     var title_text = event.target.title.value;
     var desc_text = event.target.desc.value;
-      var id = Session.get();
-      console.log(id);
 
-    Meteor.call("addIssue", title_text, desc_text, "x");
+      var groupId = Session.get("groupId")
+    Meteor.call("addIssue", title_text, desc_text, groupId);
 
     // Clear form
-    event.target.text.value = "";
+    event.target.title.value = "";
     event.target.desc.value = "";
 
     // Prevent default form submit
