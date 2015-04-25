@@ -4,14 +4,13 @@ Meteor.publish("groups", function () {
   );
 });
 
-Meteor.publish("issues", function (groupId) {
-	
+Meteor.publish("issues", function () {
 	return Issues.find(
-		{ group: groupId }
+		//{ group: groupId }
 	);
 
 	/*
-	var issueArr;
+	var issueArr;sx`
 	
 	Groups.find(groupId).issues.forEach(function(element, index, array) {
 		issueArr.push(Issues.find(element));

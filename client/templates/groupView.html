@@ -10,7 +10,7 @@
   {{/contentFor}}
 
   {{#contentFor "headerButtonRight"}}
-  	<button class="button button-clear" data-ion-modal="_addIssue">{{> ionIcon icon="ios-plus-empty"}}</button>
+  	<button class="button button-clear" data-ion-modal="_addIssue" data-id="{{group._id}}">{{> ionIcon icon="ios-plus-empty"}}</button>
   {{/contentFor}}
 
   {{#ionView}}
@@ -28,10 +28,10 @@
 
 <template name="issue">
 	<div class="issue card">
-      <div class="item item-body">
+      <a href="http://google.com" class="item item-body">
         <h2>{{title}}</h2>
         <p>{{description}}</p>
-      </div>
+      </a>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#" data-action="fake">
