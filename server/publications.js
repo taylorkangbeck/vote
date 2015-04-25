@@ -10,14 +10,4 @@ Meteor.publish("issues", function (id) {
 
 	{ group: id }
 	);
-
-	/*
-	var issueArr;
-	
-	Groups.find(groupId).issues.forEach(function(element, index, array) {
-		issueArr.push(Issues.find(element));
-	});
-
-	return issueArr;
-	*/
 })
