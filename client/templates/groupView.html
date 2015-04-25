@@ -15,7 +15,6 @@
 
   {{#ionView}}
   	{{#ionContent class="padding contact-detail"}}
-  	  <p>hi</p>
   	  {{#with group}}
 	      {{#each issues _id}}
 	        {{> issue}}
@@ -34,7 +33,7 @@
       </a>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#" data-action="fake">
+        <a class="tab-item" href="#" data-action="Meteor.call('poop')">
           <i class="icon ion-email"></i>
           Send Email
         </a>

@@ -18,4 +18,4 @@ Meteor.publish("issues", function () {
 
 	return issueArr;
 	*/
-})
+});
