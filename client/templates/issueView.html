@@ -1,0 +1,20 @@
+<template name="issueView">
+	{{#contentFor "headerButtonLeft"}}
+	  {{>ionNavBackButton path="groupViewReturn" text="Issues"}}
+	{{/contentFor}}
+	{{#contentFor "headerTitle"}}
+	  {{#with group}}
+	  <h1 class="title">{{title}}</h1>
+	  {{/with}}
+	{{/contentFor}}
+	{{#contentFor "headerButtonRight"}}
+	{{/contentFor}}
+        {{#ionView}}
+          {{#ionContent class="padding contact-detail"}}
+	    <h1> Ayes: {{aye}} </h1>	    
+            <h1> Nays: {{nay}} </h1>
+            <h1> Obstains: {{obs}} </h1>
+	  {{/ionContent}}
+	{{/ionView}}
+
+</template>

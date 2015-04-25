@@ -26,7 +26,59 @@ Meteor.methods({
   	}
   },
 
-  poop: function () {
-    console.log("poop");
-  }   
+
+  aye: function (issueId, userId) {
+    var ish = Issues.findOne(
+      { _id : issueId }
+    );
+    
+    if (ish.aye && ish.aye.indexOf(userId) > -1) {
+      return false;
+    }
+    else {
+      Issues.update(
+        { _id : issueId },
+        { $push: { aye : userId } }
+      );
+      return true;
+    }
+    
+  },
+
+  abs: function (issueId, userId) {
+    var ish = Issues.findOne(
+      { _id : issueId }
+    );
+    
+    if (ish.abs && ish.abs.indexOf(userId) > -1) {
+      return false;
+    }
+    else {
+      Issues.update(
+        { _id : issueId },
+        { $push: { abs : userId } }
+      );
+      return true;
+    }
+    
+  },
+
+  nay: function (issueId, userId) {
+    var ish = Issues.findOne(
+      { _id : issueId }
+    );
+    
+    if (ish.nay && ish.nay.indexOf(userId) > -1) {
+      return false;
+    }
+    else {
+      Issues.update(
+        { _id : issueId },
+        { $push: { nay : userId } }
+      );
+      return true;
+    }
+    
+  }
 });
+

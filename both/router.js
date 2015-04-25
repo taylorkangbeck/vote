@@ -7,10 +7,6 @@ Router.map(function() {
     path: '/'
   });
 
-  this.route('login', {
-  	path: '/login'
-  });
-
   this.route('groupView', {
   	path: '/groups/:_id',
   	data: function () {
