@@ -7,7 +7,6 @@ Meteor.publish("groups", function () {
 Meteor.publish("issues", function (id) {
     console.log(id)
     return Issues.find(
-
 	{ group: id }
 	);
 })
