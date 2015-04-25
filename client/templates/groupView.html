@@ -7,11 +7,11 @@
 </template>
 
 <template name="issue">
-    <div class="issue card">
-        <a href="http://google.com" class="item item-body">
-            <h2>{{title}}</h2>
-            <p>{{description}}</p>
-        </a>
+	<div class="issue card">
+		{{#ionItem path="issueView" buttonRight=true avatar=true class="item-icon-left"}}
+		<h2>{{title}}</h2>
+		<p>{{description}}</p>
+         {{/ionItem}}
 
         <div class="item tabs tabs-secondary tabs-icon-left">
 
