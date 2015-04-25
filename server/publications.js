@@ -4,18 +4,9 @@ Meteor.publish("groups", function () {
   );
 });
 
-Meteor.publish("issues", function () {
+
+Meteor.publish("issues", function (groupId) {
 	return Issues.find(
-		//{ group: groupId }
+		{ group: groupId }
 	);
-
-	/*
-	var issueArr;sx`
-	
-	Groups.find(groupId).issues.forEach(function(element, index, array) {
-		issueArr.push(Issues.find(element));
-	});
-
-	return issueArr;
-	*/
 });

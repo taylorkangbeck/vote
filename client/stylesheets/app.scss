@@ -13,7 +13,20 @@ $loading-font-size: 22px;
   }
 
   .tab-item {
-    font-family: "Roboto", sans-serif;
+
+      font-family: "Roboto", sans-serif;
+  }
+  .voteButton{
+      background: url('imgs/camera_test.png') no-repeat;
+
+      width: 100%;
+      height: 100%;
+  }
+  .obstainButton{
+
+  }
+  .vetoButton{
+
   }
 }
 

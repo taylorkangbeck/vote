@@ -1,7 +1,9 @@
-Meteor.subscribe("issues");
-
+Deps.autorun(function(){
+    Meteor.subscribe("issues", Session.get("groupId"));
+});
 Template.groupView.helpers({
-	issues: function () {
-    	return Issues.find({group: this._id});
+    issues: function (groupId) {
+	Session.set("groupId", groupId);
+    	    return Issues.find({});
   	}
 });
