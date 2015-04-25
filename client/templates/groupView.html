@@ -27,23 +27,23 @@
 
 <template name="issue">
 	<div class="issue card">
-      <a href="http://google.com" class="item item-body">
+      <a href="#" class="item item-body">
         <h2>{{title}}</h2>
         <p>{{description}}</p>
       </a>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#" data-action="Meteor.call('poop')">
-          <i class="icon ion-email"></i>
-          Send Email
+        <a class="tab-item" id="aye-tab" href="#" data-action="">
+          <i class="icon ion-thumbsup"></i>
+          <b>Aye</b>
         </a>
-        <a class="tab-item" href="#" data-action="fake">
-          <i class="icon ion-iphone"></i>
-          Call
+        <a class="tab-item abs" id="abs-tab" href="#" data-action="">
+          <i class="icon ion-ios-analytics"></i>
+          Abstain
         </a>
-        <a class="tab-item" href="#" data-action="fake">
-          <i class="icon ion-share"></i>
-          Share
+        <a class="tab-item nay" id="nay-tab" href="#" data-action="">
+          <i class="icon ion-thumbsdown"></i>
+          Nay
         </a>
       </div>
 
