@@ -24,5 +24,9 @@ Meteor.methods({
   	else {
   		Groups.remove(issueId);
   	}
+  },
+
+  poop: function () {
+    console.log("poop");
   }   
 });
