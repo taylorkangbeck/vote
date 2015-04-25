@@ -1,5 +1,5 @@
 Issues = new Mongo.Collection('issues');
-
+Issues.insert({name:"hi"})
 Meteor.methods({
   addIssue: function (title_text, desc_text, groupId) {
     // Make sure the user is logged in before adding a group

@@ -3,8 +3,8 @@ Template._addIssue.events({
     console.log(this);
     var title_text = event.target.title.value;
     var desc_text = event.target.desc.value;
-
-    
+      var id = Session.get();
+      console.log(id);
 
     Meteor.call("addIssue", title_text, desc_text, "x");
 

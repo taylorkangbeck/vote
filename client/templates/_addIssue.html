@@ -1,3 +1,4 @@
+
 <template name="_addIssue">
   {{#ionModal title="Add Issue" customTemplate=false}}
     <form class="new-issue">
@@ -9,3 +10,19 @@
   	</form>
   {{/ionModal}}
 </template>
+
+<!-- <template name="_addIssue"> -->
+<!-- 	{{#ionModal customTemplate=true}} -->
+<!-- 	{{#autoForm collection="Issues" id="issues-new-form" type="insert"}} -->
+<!-- 	<div class="bar bar-header bar-stable"> -->
+<!-- 		<button data-dismiss="modal" type="button" class="button button-clear">Cancel</button> -->
+<!-- 		<h2 class="title">Create Issue</h2> -->
+<!-- 		<button type="submit" class="button button-positive button-clear">Add</button> -->
+<!-- 	</div> -->
+<!-- 	<div class="content has-header overflow-scroll"> -->
+<!-- 		{{> afQuickFields omitFields="avatarUrl,details.active"}} -->
+<!-- 	</div> -->
+<!-- 	{{/autoForm}} -->
+<!-- 	{{/ionModal}} -->
+<!-- </template> -->
+
