@@ -28,7 +28,8 @@ Meteor.methods({
 
 
   aye: function (issueId, userId) {
-    var ish = Issues.findOne(
+      console.log("aye pressed")
+      var ish = Issues.findOne(
       { _id : issueId }
     );
     
@@ -64,7 +65,8 @@ Meteor.methods({
   },
 
   nay: function (issueId, userId) {
-    var ish = Issues.findOne(
+
+  var ish = Issues.findOne(
       { _id : issueId }
     );
     
