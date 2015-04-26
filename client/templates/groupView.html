@@ -2,10 +2,6 @@
   {{#ionSideMenuContainer}}
 
     {{#ionSideMenu side="right"}}
-      <div class="bar bar-header bar-dark">
-            <h1 class="title">Left Menu</h1>
-      </div>
-      
       {{#ionSubheaderBar}}
         <h3 class="stitle">Members:</h3>
       {{/ionSubheaderBar}}
@@ -45,7 +41,7 @@
     {{/contentFor}}
 
     {{#ionView}}
-      {{#ionContent class="padding contact-detail"}} 
+      {{#ionContent class="padding"}} 
         {{#with group}}
           {{#each issues _id}}
             {{> issue}}
