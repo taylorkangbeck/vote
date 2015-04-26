@@ -21,6 +21,13 @@ Template.groupView.helpers({
     }
 });
 
+Template.groupView.events({
+	"click .leave-group": function () {
+		Meteor.call("leaveGroup", Template.instance().data.group._id, Meteor.userId());
+		history.back();
+	}
+});
+
 Template.groupView.rendered = function () {
     IonSideMenu.snapper.settings({disable: 'left'});
 };
@@ -82,6 +89,8 @@ Template.user.events({
 		var user_id = Template.instance().data._id;
 		console.log(user_id);
 		Meteor.call("addUser", Session.get("groupId"), user_id);
+		Session.set('searchQuery', "");
+		document.getElementById("search-bar").value = "";
 	}
 });
 

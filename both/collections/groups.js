@@ -33,5 +33,12 @@ Meteor.methods({
 	      { $push: { members : userId } }
 	    );
   	}
+  },
+
+  leaveGroup: function (groupId, userId) {
+  	Groups.update(
+      { _id : groupId },
+      { $pull: { members : userId } }
+    );
   }
 });
