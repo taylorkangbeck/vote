@@ -38,11 +38,27 @@ Meteor.methods({
       return false;
     }
     else {
-      Issues.update(
-        { _id : issueId },
-        { $push: { aye : userId } }
-      );
-      return true;
+      var vote = getUserVote(issueId, userId);
+      if (vote != "aye") {
+        if (vote == "nay") {
+          Issues.update(
+            { _id : issueId },
+            { $pull: { nay : userId } }
+          );
+        }
+        else if (vote == "abs") {
+          Issues.update(
+            { _id : issueId },
+            { $pull: { abs : userId } }
+          );
+        }
+
+        Issues.update(
+          { _id : issueId },
+          { $push: { aye : userId } }
+        );
+        return true;
+      }
     }
     
   },
@@ -56,11 +72,27 @@ Meteor.methods({
       return false;
     }
     else {
-      Issues.update(
-        { _id : issueId },
-        { $push: { abs : userId } }
-      );
-      return true;
+      var vote = getUserVote(issueId, userId);
+      if (vote != "abs") {
+        if (vote == "nay") {
+          Issues.update(
+            { _id : issueId },
+            { $pull: { nay : userId } }
+          );
+        }
+        else if (vote == "aye") {
+          Issues.update(
+            { _id : issueId },
+            { $pull: { aye : userId } }
+          );
+        }
+
+        Issues.update(
+          { _id : issueId },
+          { $push: { abs : userId } }
+        );
+        return true;
+      }
     }
     
   },
@@ -74,30 +106,48 @@ Meteor.methods({
       return false;
     }
     else {
-      Issues.update(
-        { _id : issueId },
-        { $push: { nay : userId } }
-      );
-      return true;
+      var vote = getUserVote(issueId, userId);
+      if (vote != "nay") {
+        if (vote == "aye") {
+          Issues.update(
+            { _id : issueId },
+            { $pull: { aye : userId } }
+          );
+        }
+        else if (vote == "abs") {
+          Issues.update(
+            { _id : issueId },
+            { $pull: { abs : userId } }
+          );
+        }
+
+        Issues.update(
+          { _id : issueId },
+          { $push: { nay : userId } }
+        );
+        return true;
+      }
     }
     
   },
 
-  getMyVote: function (issueId, userId) {
-    var ish = Issues.findOne(
-      { _id : issueId }
-    );
-
-    if(ish.aye && ish.aye.indexOf(userId) > -1) {
-      return "aye";
-    }
-    else if(ish.abs && ish.abs.indexOf(userId) > -1) {
-      return "abs";
-    }
-    else if(ish.nay && ish.nay.indexOf(userId) > -1) {
-      return "nay";
-    }
-  }
+  getMyVote: function(iId, uId) { return getUserVote(iId, uId) }
 
 });
 
+function getUserVote(issueId, userId) {
+  var ish = Issues.findOne(
+    { _id : issueId }
+  );
+
+  if(ish.aye && ish.aye.indexOf(userId) > -1) {
+    return "aye";
+  }
+  else if(ish.abs && ish.abs.indexOf(userId) > -1) {
+    return "abs";
+  }
+  else if(ish.nay && ish.nay.indexOf(userId) > -1) {
+    return "nay";
+  }
+  return "";
+}
