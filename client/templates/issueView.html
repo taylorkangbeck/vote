@@ -2,18 +2,23 @@
 	{{#contentFor "headerButtonLeft"}}
 	  {{>ionNavBackButton path="groupViewReturn" text="Issues"}}
 	{{/contentFor}}
+
 	{{#contentFor "headerTitle"}}
-	  {{#with group}}
-	  <h1 class="title">{{title}}</h1>
+	  {{#with issue}}
+	  	<h1 class="title">{{title}}</h1>
 	  {{/with}}
 	{{/contentFor}}
+
 	{{#contentFor "headerButtonRight"}}
 	{{/contentFor}}
-        {{#ionView}}
-          {{#ionContent class="padding contact-detail"}}
-	    <h1> Ayes: {{aye}} </h1>	    
-            <h1> Nays: {{nay}} </h1>
-            <h1> Obstains: {{obs}} </h1>
+
+    {{#ionView}}
+      {{#ionContent class="padding contact-detail"}}
+      	{{#with issue}}
+		  	<h1> Ayes: {{getAye}} </h1>	    
+	        <h1> Nays: {{getAbs}}</h1>
+	        <h1> Abstains: {{getNay}}</h1>
+	    {{/with}}
 	  {{/ionContent}}
 	{{/ionView}}
 

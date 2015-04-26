@@ -29,7 +29,7 @@ Router.map(function() {
   	path: '/issueView/:_id',
   	data: function () {
   		return {
-  			group: Issues.findOne({_id: this.params._id })
+  			issue: Issues.findOne({_id: this.params._id })
   		};
   	}
   });

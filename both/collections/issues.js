@@ -12,7 +12,10 @@ Meteor.methods({
       description: desc_text,
       createdAt: new Date(),
       admin: Meteor.userId(),
-      group: groupId
+      group: groupId,
+      aye: [],
+      abs: [],
+      nay: []
     });
   },
 
@@ -25,7 +28,6 @@ Meteor.methods({
   		Groups.remove(issueId);
   	}
   },
-
 
   aye: function (issueId, userId) {
     var ish = Issues.findOne(
@@ -79,6 +81,23 @@ Meteor.methods({
       return true;
     }
     
+  },
+
+  getMyVote: function (issueId, userId) {
+    var ish = Issues.findOne(
+      { _id : issueId }
+    );
+
+    if(ish.aye && ish.aye.indexOf(userId) > -1) {
+      return "aye";
+    }
+    else if(ish.abs && ish.abs.indexOf(userId) > -1) {
+      return "abs";
+    }
+    else if(ish.nay && ish.nay.indexOf(userId) > -1) {
+      return "nay";
+    }
   }
+
 });
 
