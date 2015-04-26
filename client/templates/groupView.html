@@ -1,36 +1,29 @@
 <template name="groupView">
-	{{#contentFor "headerButtonLeft"}}
-	<button class="button button-clear pull-left" data-ion-menu-toggle="left">
-		{{#if isAndroid}}
-		{{> ionIcon icon='android-more-vertical'}}
-		{{else}}
-		{{> ionIcon icon='navicon'}}
-		{{/if}}
-	</button>
-	{{/contentFor}} 
 
-	<!-- {{#contentFor "headerButtonLeft"}} -->
-	
-	<!-- {{/contentFor}} -->
-	 {{#contentFor "headerTitle"}}
-	{{#with group}}
-	<h1 class="title">{{name}}</h1>
-	{{/with}}
-	{{/contentFor}}
-	{{#contentFor "headerButtonRight"}}
-	
-	<button class="button button-clear" data-ion-modal="_addIssue" data-id="{{group._id}}">{{> ionIcon icon="ios-plus-empty"}}</button>
-	{{/contentFor}}
+    {{#contentFor "headerButtonLeft"}}
+      {{>ionNavBackButton path="groups" text="My Groups"}}
+    {{/contentFor}} 
+    
+    {{#contentFor "headerTitle"}}
+      {{#with group}}
+        <h1 class="title">{{name}}</h1>
+      {{/with}}
+    {{/contentFor}}
 
-	{{#ionView}}
-	{{#ionContent class="padding contact-detail"}}
-	{{#with group}}
-	{{#each issues _id}}
-	{{> issue}}
-	{{/each}}
-	{{/with}}
-	{{/ionContent}}
-	{{/ionView}}
+    {{#contentFor "headerButtonRight"}}
+      <button class="button button-clear" data-ion-modal="_addIssue" data-id="{{group._id}}">{{> ionIcon icon="ios-plus-empty"}}</button>
+    {{/contentFor}}
+
+    {{#ionView}}
+      {{#ionContent class="padding contact-detail"}} 
+        {{#with group}}
+          {{#each issues _id}}
+            {{> issue}}
+          {{/each}}
+        {{/with}}
+      {{/ionContent}}
+    {{/ionView}}
+
 
 </template>
 
@@ -38,23 +31,25 @@
 	<div class="issue card">
 
 		{{#ionItem path="issueView" buttonRight=true avatar=true class="item-icon-left"}}
-		<h2>{{title}}</h2>
-		<p>{{description}}</p>
-         {{/ionItem}}
+  		<h2>{{title}}</h2>
+  		<p>{{description}}</p>
+    {{/ionItem}}
 
 		<div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item aye" id="aye-tab" href="#">
-          <i class="icon ion-thumbsup"></i>
-          <b>Aye</b>
-        </a>
-        <a class="tab-item abs" id="abs-tab" href="#" >
-          <i class="icon ion-ios-analytics"></i>
-          Abstain
-        </a>
-        <a class="tab-item nay" id="nay-tab" href="#" >
-          <i class="icon ion-thumbsdown"></i>
-          Nay
-        </a>
-      </div>
+
+      <a class="aye tab-item {{#if myAye}}pressed{{/if}}" id="" href="#" data-action="">
+        <i class="icon ion-thumbsup"></i>
+        Aye
+      </a>
+      <a class="abs tab-item {{#if myAbs}}pressed{{/if}}" id="" href="#" data-action="">
+        <i class="icon ion-ios-analytics"></i>
+        Abstain
+      </a>
+      <a class="nay tab-item {{#if myNay}}pressed{{/if}}" href="#" data-action="">
+        <i class="icon ion-thumbsdown"></i>
+        Nay
+      </a>
+
     </div>
+  </div>
 </template>

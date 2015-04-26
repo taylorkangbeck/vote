@@ -10,6 +10,8 @@ Template._addIssue.events({
     event.target.title.value = "";
     event.target.desc.value = "";
 
+    IonModal.close();
+
     // Prevent default form submit
     return false;
   }
