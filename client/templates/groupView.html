@@ -12,7 +12,7 @@
     {{#contentFor "headerButtonRight"}}
       <button class="button button-clear" data-ion-modal="_addIssue" data-id="{{group._id}}">{{> ionIcon icon="ios-plus-empty"}}</button>
     {{/contentFor}}
-    
+
     {{#ionView}}
       {{#ionContent class="padding contact-detail"}} 
         {{#with group}}
@@ -34,15 +34,15 @@
     {{/ionItem}}
 
 		<div class="item tabs tabs-secondary tabs-icon-left">
-      <a class="aye tab-item" href="#" data-action="">
+      <a class="aye tab-item {{#if myAye}}pressed{{/if}}" id="" href="#" data-action="">
         <i class="icon ion-thumbsup"></i>
-        <b>Aye</b>
+        Aye
       </a>
-      <a class="abs tab-item" href="#" data-action="">
+      <a class="abs tab-item {{#if myAbs}}pressed{{/if}}" id="" href="#" data-action="">
         <i class="icon ion-ios-analytics"></i>
         Abstain
       </a>
-      <a class="nay tab-item" href="#" data-action="">
+      <a class="nay tab-item {{#if myNay}}pressed{{/if}}" href="#" data-action="">
         <i class="icon ion-thumbsdown"></i>
         Nay
       </a>

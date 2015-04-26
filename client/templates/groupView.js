@@ -1,6 +1,7 @@
 Deps.autorun(function(){
     Meteor.subscribe("issues", Session.get("groupId"));
 });
+
 Template.groupView.helpers({
 
     issues: function (groupId) {
@@ -8,6 +9,12 @@ Template.groupView.helpers({
     	return Issues.find({});
     }
 
+});
+
+Template.issue.helpers({
+	myAye: function () { return this.aye.indexOf(Meteor.userId()) > -1 },
+	myAbs: function () { return this.abs.indexOf(Meteor.userId()) > -1 },
+	myNay: function () { return this.nay.indexOf(Meteor.userId()) > -1 }
 });
 
 Template.issue.events({
@@ -23,11 +30,16 @@ Template.issue.events({
 		Meteor.call("nay", this._id, Meteor.userId());
 	}
 });
-/*
-Template.issue.onRendered({
-	//if (voteIs("aye") press("aye")
-});
 
+Template.issue.onRendered(function () {
+	/*
+	if (voteIs("aye", this._id)) {
+		var param = "aye-" + this._id;
+		press(id);
+	}
+	*/
+});
+/*
 Template.issue.helpers({
 	"aye-p": function() { return voteIs("aye") },
 	"abs-p": function() { return voteIs("abs") },
@@ -38,7 +50,7 @@ function press(tabname) {
 	document.getElementById(tabname).classList.add("pressed");
 }
 
-function voteIs(type) {
+function voteIs(type, issueId) {
 	var cb = function (error, result) {
 		if (error) {
 			alert(error);
@@ -49,6 +61,6 @@ function voteIs(type) {
 		}
 	};
 
-	Meteor.call("getMyVote", this._id, Meteor.userId(), cb);
+	Meteor.call("getMyVote", issueId, Meteor.userId(), cb);
 }
 */

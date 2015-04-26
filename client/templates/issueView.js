@@ -13,6 +13,16 @@ Template.issueView.helpers({
     getNay: function() { 
     	var ish = Issues.findOne(Template.instance().data.issue._id);
     	return ish.nay.length;
+    },
+
+    getTotalVotes: function () {
+    	var ish = Issues.findOne(Template.instance().data.issue._id);
+    	return (ish.aye.length + ish.abs.length + ish.nay.length);
+    },
+
+    getTotalMembers: function () {
+    	var grp = Groups.findOne(Template.instance().data.issue.group);
+    	return grp.members.length;
     }
 });
 

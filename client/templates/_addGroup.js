@@ -9,6 +9,8 @@ Template._addGroup.events({
     // Clear form
     event.target.name.value = "";
 
+    IonModal.close();
+    
     // Prevent default form submit
     return false;
   }
