@@ -1,3 +1,5 @@
+Meteor.subscribe("allUserData");
+
 Deps.autorun(function(){
     Meteor.subscribe("issues", Session.get("groupId"));
 });
@@ -7,9 +9,21 @@ Template.groupView.helpers({
     issues: function (groupId) {
 		Session.set("groupId", groupId);
     	return Issues.find({});
-    }
+    },
 
+    members: function () {
+    	var names = [];
+    	Template.instance().data.group.members.forEach(function (element, index, array) {
+    		var curUser = Meteor.users.findOne({ _id: element});
+    		names.push(curUser);
+    	});
+    	return names;
+    }
 });
+
+Template.groupView.rendered = function () {
+    IonSideMenu.snapper.settings({disable: 'left'});
+};
 
 Template.issue.helpers({
 	myAye: function () { return this.aye.indexOf(Meteor.userId()) > -1 },
@@ -31,36 +45,39 @@ Template.issue.events({
 	}
 });
 
-Template.issue.onRendered(function () {
-	/*
-	if (voteIs("aye", this._id)) {
-		var param = "aye-" + this._id;
-		press(id);
+//search
+Tracker.autorun(function() {
+  if (Session.get('searchQuery')) {
+    Meteor.subscribe('usersSearch', Session.get('searchQuery'));
+  }
+});
+
+Template.search.events({
+  'keyup input': function (event, template) {
+    Session.set('searchQuery', event.target.value);
+  }
+});
+
+Template.search.helpers({
+  searchQuery: function() {
+    return Session.get('searchQuery');
+  },
+  searchResults: function () {
+    var re = "^" + Session.get('searchQuery');
+    var query = new RegExp(re, 'i');
+    var results = Meteor.users.find({'username': query}, {});
+    return {results: results}; 
+  },
+  isSearchInput: function () {
+  	var input = Session.get('searchQuery');
+    return input != null && input != '';
+  }
+});
+
+Template.user.events({
+	'click .user_result': function (event, template) {
+		var user_id = Template.instance().data._id;
+		console.log(user_id);
+		Meteor.call("addUser", Session.get("groupId"), user_id);
 	}
-	*/
 });
-/*
-Template.issue.helpers({
-	"aye-p": function() { return voteIs("aye") },
-	"abs-p": function() { return voteIs("abs") },
-	"nay-p": function() { return voteIs("nay") }
-});
-
-function press(tabname) {
-	document.getElementById(tabname).classList.add("pressed");
-}
-
-function voteIs(type, issueId) {
-	var cb = function (error, result) {
-		if (error) {
-			alert(error);
-			return false;
-		}
-		else {
-			return result == type;
-		}
-	};
-
-	Meteor.call("getMyVote", issueId, Meteor.userId(), cb);
-}
-*/

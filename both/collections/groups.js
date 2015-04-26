@@ -1,20 +1,5 @@
 Groups = new Mongo.Collection('groups');
 
-//Groups.before.insert(function (groupId))
-
-
-/*
-groupSchema = new SimpleSchema({
-  name: {
-    type: String,
-    label: "Name",
-    max: 200
-  }
-});
-
-Groups.attachSchema(groupSchema);
-
-*/
 Meteor.methods({
   addGroup: function (text) {
     // Make sure the user is logged in before adding a group
@@ -38,10 +23,15 @@ Meteor.methods({
   	else {
   		Groups.remove(groupId);
   	}
+  },
+
+  addUser: function (groupId, userId) {
+  	var thisGroup = Groups.findOne(groupId);
+  	if (!(thisGroup.members.indexOf(userId) > -1)) {
+  		Groups.update(
+	      { _id : groupId },
+	      { $push: { members : userId } }
+	    );
+  	}
   }
-/*
-  setChecked: function (taskId, setChecked) {
-    Tasks.update(taskId, { $set: { checked: setChecked} });
-  }
-  */
 });
