@@ -10,6 +10,7 @@
 	{{/contentFor}}
 
 	{{#contentFor "headerButtonRight"}}
+			<button class="button button-clear" data-ion-popover="_deleteIssue" data-id="{{issue._id}}">{{> ionIcon icon="trash-a"}}</button>
 	{{/contentFor}}
 
     {{#ionView}}

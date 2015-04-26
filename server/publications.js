@@ -10,3 +10,7 @@ Meteor.publish("issues", function (groupId) {
 		{ group: groupId }
 	);
 });
+
+Meteor.publish("allUserData", function () {
+    return Meteor.users.find({}, {fields: {'_id': 1, 'username': 1}});
+});

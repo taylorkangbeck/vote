@@ -25,7 +25,7 @@ Meteor.methods({
   		throw new Meteor.Error("not-authorized");
   	}
   	else {
-  		Groups.remove(issueId);
+  		Issues.remove(issueId);
   	}
   },
 
@@ -134,7 +134,7 @@ Meteor.methods({
   },
 
   getMyVote: function(iId, uId) { return getUserVote(iId, uId) }
-
+  
 });
 
 function getUserVote(issueId, userId) {

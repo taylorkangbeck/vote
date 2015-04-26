@@ -1,5 +1,37 @@
 <template name="groupView">
 
+  {{#ionSideMenuContainer}}
+
+    {{#ionSideMenu side="right"}}
+      <div class="bar bar-header bar-dark">
+            <h1 class="title">Left Menu</h1>
+      </div>
+      
+      {{#ionSubheaderBar}}
+        <h3 class="stitle">Members:</h3>
+      {{/ionSubheaderBar}}
+
+      {{#ionContent}}
+        <div class = "padding">
+          {{#each members}}
+            {{#ionItem}}
+              {{username}}
+            {{/ionItem}}
+          {{/each}}
+        </div>
+
+        <br>
+
+        {{> search}}
+
+      {{/ionContent}}
+      
+    {{/ionSideMenu}}
+
+
+  {{#ionSideMenuContent}}
+ 
+
     {{#contentFor "headerButtonLeft"}}
       {{>ionNavBackButton path="groups" text="My Groups"}}
     {{/contentFor}} 
@@ -24,8 +56,13 @@
       {{/ionContent}}
     {{/ionView}}
 
+   {{/ionSideMenuContent}}
+  {{/ionSideMenuContainer}}
 
 </template>
+
+    
+
 
 <template name="issue">
 	<div class="issue card">
@@ -52,4 +89,33 @@
 
     </div>
   </div>
+</template>
+
+<template name="search">
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          {{> ionIcon icon="ios-search" class="placeholder-icon"}}
+          <input type="text" placeholder="Add people" value="{{searchQuery}}">
+        </label>
+      </div>
+      <div class="padding">
+        {{#ionList}}
+          {{#if isSearchInput}}
+            {{#if searchResults.results}}
+              {{#each searchResults.results}}
+                {{> user}}
+              {{/each}}
+            {{/if}}
+          {{/if}}
+        {{/ionList}}
+      </div>
+    </div>
+</template>
+
+<template name="user">
+  {{#ionItem class="user_result"}}
+    {{> ionIcon icon="plus-circled"}}
+    {{username}}
+  {{/ionItem}}
 </template>
