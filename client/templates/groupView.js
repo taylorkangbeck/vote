@@ -18,6 +18,11 @@ Template.groupView.helpers({
     		names.push(curUser);
     	});
     	return names;
+    },
+
+    getAdmin: function () {
+    	var adm = Meteor.users.findOne({ _id: Template.instance().data.group.admin });
+    	return adm.username;
     }
 });
 

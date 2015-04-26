@@ -4,11 +4,12 @@
     {{#ionSideMenu side="right"}}
 
       {{#ionSubheaderBar}}
-        <h3 class="stitle">Members:</h3>
+        <h3>Members:</h3>
       {{/ionSubheaderBar}}
 
 
-      {{#ionContent}}
+    {{#ionContent}}
+
         <div class = "padding">
           {{#each members}}
             {{#ionItem}}
@@ -46,8 +47,14 @@
       <button class="button button-clear" data-ion-modal="_addIssue" data-id="{{group._id}}">{{> ionIcon icon="ios-plus-empty"}}</button>
     {{/contentFor}}
 
+    {{#ionSubheaderBar}}
+      {{#with group}}
+        <h6>Admin: {{getAdmin}}</h6>
+      {{/with}}
+    {{/ionSubheaderBar}}  
+
     {{#ionView}}
-      {{#ionContent class="padding"}} 
+      {{#ionContent}} 
         {{#with group}}
           {{#each issues _id}}
             {{> issue}}
@@ -96,7 +103,7 @@
         </label>
       </div>
       <div class="padding">
-        {{#ionList}}
+        {{#ionList class="results-list"}}
           {{#if isSearchInput}}
             {{#if searchResults.results}}
               {{#each searchResults.results}}
