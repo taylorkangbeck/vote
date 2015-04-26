@@ -10,7 +10,7 @@ Template._addGroup.events({
     event.target.name.value = "";
 
     IonModal.close();
-
+    
     // Prevent default form submit
     return false;
   }
@@ -25,3 +25,17 @@ Template._addGroup.helpers({
     }
   }
 });
+
+/*
+AutoForm.hooks({
+  'edit-form': {
+    onSuccess: function (operation, result, template) {
+      alert('Post saved successfully!');
+    },
+
+    onError: function(operation, error, template) {
+      console.log(error);
+    }
+  }
+});
+*/
