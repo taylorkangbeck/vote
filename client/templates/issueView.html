@@ -11,10 +11,12 @@
 	{{/contentFor}}
         {{#ionView}}
           {{#ionContent class="padding contact-detail"}}
-	    <h1> Ayes: {{aye}} </h1>	    
-            <h1> Nays: {{nay}} </h1>
-            <h1> Obstains: {{obs}} </h1>
-	  {{/ionContent}}
+	    {{#with group}}
+	  <h1> Ayes: {{aye.length}} </h1>	    
+            <h1> Nays: {{nay.length}} </h1>
+            <h1> Obstains: {{abs.length}} </h1>
+	    {{/with}}
+	    {{/ionContent}}
 	{{/ionView}}
 
 </template>

@@ -12,7 +12,9 @@ Template.groupView.helpers({
 
 Template.issue.events({
 	"click .aye": function (event, template) {
-		Meteor.call("aye", this._id, Meteor.userId(), function (error, result) {
+	    Meteor.call("aye", this._id, Meteor.userId(), function (error, result)
+
+			{
 			if (error) {
 				alert(error);
 			} else {
