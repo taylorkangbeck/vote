@@ -2,9 +2,11 @@
   {{#ionSideMenuContainer}}
 
     {{#ionSideMenu side="right"}}
+
       {{#ionSubheaderBar}}
         <h3 class="stitle">Members:</h3>
       {{/ionSubheaderBar}}
+
 
       {{#ionContent}}
         <div class = "padding">
@@ -20,7 +22,11 @@
         {{> search}}
 
       {{/ionContent}}
-      
+
+      {{#ionFooterBar class="leave-group"}}
+        <h5><center>Leave group</center></h5>
+      {{/ionFooterBar}}
+
     {{/ionSideMenu}}
 
 
@@ -59,7 +65,7 @@
 <template name="issue">
 	<div class="issue card">
 
-		{{#ionItem path="issueView" buttonRight=true avatar=true class="item-icon-left"}}
+		{{#ionItem path="issueView"}}
   		<h2>{{title}}</h2>
   		<p>{{description}}</p>
     {{/ionItem}}
@@ -67,7 +73,7 @@
 		<div class="item tabs tabs-secondary tabs-icon-left">
       <a class="aye tab-item {{#if myAye}}pressed{{/if}}" id="" href="#" data-action="">
         <i class="icon ion-thumbsup"></i>
-        Aye
+        Yea
       </a>
       <a class="abs tab-item {{#if myAbs}}pressed{{/if}}" id="" href="#" data-action="">
         <i class="icon ion-ios-analytics"></i>
@@ -86,7 +92,7 @@
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
           {{> ionIcon icon="ios-search" class="placeholder-icon"}}
-          <input type="text" placeholder="Add people" value="{{searchQuery}}">
+          <input type="text" id="search-bar" placeholder="Add people" value="{{searchQuery}}">
         </label>
       </div>
       <div class="padding">
