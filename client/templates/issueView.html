@@ -17,10 +17,12 @@
       {{#ionContent class="padding contact-detail"}}
       	{{#with issue}}
       		{{> issue}}
-		  	<h2> Ayes: {{getAye}} </h2>	    
+
+		<h2> Yeas: {{getAye}} </h2>	    
 	        <h2> Nays: {{getNay}}</h2>
 	        <h2> Abstains: {{getAbs}}</h2>
-	        <h2> {{getTotalVotes}} / {{getTotalMembers}} votes </h2>
+	        <h3> {{getTotalVotes}} / {{getTotalMembers}} votes </h3>
+
 	    {{/with}}
 	  {{/ionContent}}
 	{{/ionView}}
