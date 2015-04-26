@@ -1,6 +1,7 @@
+Meteor.subscribe('users');
 Tracker.autorun(function() {
     if (Session.get('searchQuery')) {
-	Meteor.subscribe('productsSearch', Session.get('searchQuery'));
+	Meteor.subscribe('userSearch', Session.get('searchQuery'));
     }
 });
 
@@ -15,10 +16,12 @@ Template.search.events({
 });
 
 Template.search.helpers({
-    products: function() {
-	return Products.search(Session.get('searchQuery'));
+    users: function() {
+	console.log(Meteor.users.find({}))
+	return Meteor.users.find();
     },
     searchQuery: function() {
+	console.log( Session.get('searchQuery'))
 	return Session.get('searchQuery');
     }
 });
