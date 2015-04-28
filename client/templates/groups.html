@@ -1,6 +1,8 @@
 <template name="groups">
   {{#contentFor "headerButtonLeft"}}
-    {{> loginButtons}}
+    <button class="button button-clear" data-ion-popover="_login">
+      {{> ionIcon icon="person"}}
+    </button>
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
@@ -36,4 +38,10 @@
     {{name}}
     {{> ionIcon icon="ios-arrow-forward" class="positive"}}
   {{/ionItem}}
+</template>
+
+<template name="_login">
+  {{#ionPopover}}
+    {{> loginButtons}}
+  {{/ionPopover}}
 </template>
