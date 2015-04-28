@@ -26,6 +26,13 @@ Template.groupView.helpers({
     }
 });
 
+Template.groupView.events({
+	"click .button": function (event, template) {
+		Meteor.call("deleteGroup", Session.get("groupId"));
+		Router.go("/");
+	}
+});
+
 Template.groupView.rendered = function () {
     IonSideMenu.snapper.settings({disable: 'left'});
 };
