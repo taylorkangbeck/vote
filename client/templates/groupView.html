@@ -64,13 +64,21 @@
 
 
 <template name="issue">
+
+	
 	<div class="issue card">
+	
+	 {{#ionItem path="issueView"  }}
 
-		{{#ionItem path="issueView" buttonRight=true avatar=true class="item-icon-left"}}
   		<h2>{{title}}</h2>
-  		<p>{{description}}</p>
-    {{/ionItem}}
+	<div class="item item-body">
 
+
+		<h4>Notes</h4>
+		<p>
+			{{description}}
+		</p>
+	</div>
 		<div class="item tabs tabs-secondary tabs-icon-left">
       <a class="aye tab-item {{#if myAye}}pressed{{/if}}" id="" href="#" data-action="">
         <i class="icon ion-thumbsup"></i>
@@ -84,9 +92,14 @@
         <i class="icon ion-thumbsdown"></i>
         Nay
       </a>
-    </div>
-  </div>
+		</div>
+
+{{/ionItem}}
+
+	
+		</div>
 </template>
+
 
 <template name="search">
     <div class="list">
